@@ -1,0 +1,1 @@
+ build\\web\\manifest.json:  C:\\Users\\TechnoNext\\.gemini\\antigravity\\scratch\\find_your_doctor\\web\\index.html C:\\Users\\TechnoNext\\.gemini\\antigravity\\scratch\\find_your_doctor\\web\\manifest.json

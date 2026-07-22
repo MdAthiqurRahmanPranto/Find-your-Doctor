@@ -1,0 +1,23 @@
+{
+    "name": "Find Your Doctor Web App",
+    "short_name": "FindDoctor",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#0d9488",
+    "description": "Responsive Web Application for finding medical specialists, districts, and patient reviews.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
