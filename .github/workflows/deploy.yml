@@ -30,9 +30,9 @@ jobs:
         run: flutter build web --release
 
       - name: Deploy to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: w9jds/firebase-action@v11.16.0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TOKEN }}'
-          channelId: live
-          projectId: find-your-doctor-3afaf
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TOKEN }}
+          PROJECT_ID: find-your-doctor-3afaf
