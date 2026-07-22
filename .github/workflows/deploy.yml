@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting
+name: Deploy Web and Build APK
 
 on:
   push:
@@ -28,6 +28,15 @@ jobs:
 
       - name: Build Web
         run: flutter build web --release
+
+      - name: Build Android APK
+        run: flutter build apk --release
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
 
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v11.16.0
