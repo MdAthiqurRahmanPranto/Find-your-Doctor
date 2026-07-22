@@ -43,7 +43,7 @@ class AppTheme {
           color: textPrimaryDark,
         ),
       ),
-      cardTheme: const CardThemeData(
+      cardTheme: CardThemeData(
         color: darkSurface,
         elevation: 4,
         shadowColor: Colors.black38,
