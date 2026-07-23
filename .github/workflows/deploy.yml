@@ -4,9 +4,42 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: # ম্যানুয়ালি বাটনে চাপ দিলে এটি ট্র্রিগার হবে
 
 jobs:
-  build_and_deploy:
+  # 🌐 JOB 1: এটি প্রতিবার git push করলে অটোমেটিক চলবে
+  deploy_web:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Run Flutter Tests
+        run: flutter test
+
+      - name: Build Web
+        run: flutter build web --release
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v11.16.0
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TOKEN }}
+          PROJECT_ID: find-your-doctor-3afaf
+
+  # 📱 JOB 2: এটি কেবল ম্যানুয়ালি Run workflow চাপলে চলবে
+  build_apk:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -26,9 +59,6 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build Web
-        run: flutter build web --release
-
       - name: Build Android APK
         run: flutter build apk --release
 
@@ -37,11 +67,3 @@ jobs:
         with:
           name: app-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@v11.16.0
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TOKEN }}
-          PROJECT_ID: find-your-doctor-3afaf
