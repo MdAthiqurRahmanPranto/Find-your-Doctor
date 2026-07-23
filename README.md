@@ -1,16 +1,42 @@
-# find_your_doctor
+# 🩺 Find Your Doctor
 
-A new Flutter project.
+A cross-platform Flutter application designed to help users search for medical specialists, view doctor profiles, and manage appointments seamlessly on Web and Android.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+* **Doctor Search & Filtering:** Search doctors by specialty, ratings, or location.
+* **Appointment Booking:** Seamless user interface for selecting available time slots and scheduling visits.
+* **Cross-Platform:** Single codebase running smoothly on both Web and Mobile devices.
+* **Automated CI/CD:** Integrated Continuous Integration and Deployment powered by GitHub Actions.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack & Tools
+
+* **Frontend:** Flutter & Dart
+* **Hosting:** Firebase Hosting (for Web)
+* **CI/CD:** GitHub Actions
+* **Version Control:** Git & GitHub
+
+---
+
+## 🏗️ Project Structure
+
+```text
+find-your-doctor/
+├── android/               # Native Android configuration & build files
+├── web/                   # Web-specific configurations
+├── lib/                   # Application source code
+│   ├── models/            # Data structures
+│   ├── screens/           # UI components & screens
+│   └── services/          # API & business logic
+├── test/                  # Automated Unit & Widget tests
+│   ├── unit_test.dart
+│   └── widget_test.dart
+├── .github/
+│   └── workflows/
+│       └── deploy.yml     # CI/CD Workflow configuration
+├── pubspec.yaml           # Flutter dependencies & assets
+└── README.md
